@@ -1,0 +1,32 @@
+{
+    "name": "jsocd",
+    "version": "0.1.0",
+    "description": "jsocd is a port of openocd application to Webassembly. It allows you to do on chip debugging using webusb.",
+    "license": "MIT",
+    "repository": "https://github.com/numaru/jsocd.git",
+    "private": true,
+    "keywords": [
+        "webassembly",
+        "emscripten"
+    ],
+    "files": [
+        "dist/package/openocd.data",
+        "dist/package/openocd.js",
+        "dist/package/openocd.wasm",
+        "dist/package/jsocd.umd.js",
+        "dist/package/jsocd.mjs"
+    ],
+    "main": "dist/package/jsocd.mjs",
+    "types": "src/index.d.ts",
+    "scripts": {
+        "build": "npm run build-native && npm run build-src",
+        "dist": "rm -rf dist && cp -r build/package dist",
+        "serve": "http-server dist",
+        "build-native": "make",
+        "build-src": "vite build"
+    },
+    "devDependencies": {
+        "http-server": "^14.1.1",
+        "vite": "^5.2.2"
+    }
+}
